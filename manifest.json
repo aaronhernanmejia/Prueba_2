@@ -1,0 +1,20 @@
+{
+    "name":"Conversiones", 
+    "short_name":"Conversiones", 
+    "description":"Bienvenido, a tu aplicacion PWA donde podras realizar todo tipo de conversiones de unidades, desarrollado por: Aaron Hernan Mejia Ceja",
+    "background_color":"red",
+    "theme_color":"blue",
+    "orientation":"portrait",
+    "display":"standalone",
+    "start_url":"./?utm_source=web_app_manifest",
+    "scope":"./",
+    "lang":"es-MX",
+    "icons": [
+        {
+          "src": "imagenes/mi_logo.png",
+          "sizes": "1024x1024",
+          "type": "image/png"
+        }
+        ] 
+    }
+
