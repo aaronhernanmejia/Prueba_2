@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="estilos.css">
+    <link rel="manifest" href="manifest.json"><!--Enlaza el archivo json al index-->
+    <link rel="icon" href="imagenes/mi_logo.png">
+    <script src="jquery/dist/jquery.js"></script>
+    <title>Conversiones</title>
+
+</head>
+<body>
+
+    <header>
+        <img src="imagenes/itcg.jpg">
+        CONVERSION DE UNIDADES 
+        <br/><br/>
+        <h5>Aaron Hernan Mejia Ceja. 2A Ingenieria Informatica</h5>
+    </header>
+   <br/><br/>
+    <h5>CONVERSION ENTRE EL SISTEMA UNIVERSAL Y EL SISTEMA INGLES</h5>
+  
+    <a href="programas/longitud.html">
+        <div class="botones" id="longitud">
+            LONGITUD
+        </div>
+    </a>
+
+    <br/>
+
+    <a href="programas/masa.html">
+        <div class="botones" id="masa">
+            MASA
+        </div>
+    </a>
+
+    <br/>
+
+    <a href="programas/tiempo.html">
+        <div class="botones" id="tiempo">
+            TIEMPO
+        </div>
+    </a>
+
+    <br/>
+
+    <a href="programas/temperatura.html">
+        <div class="botones" id="temperatura">
+           TEMPERATURA
+        </div>
+    </a>
+   
+   <script>
+            $(document).ready(function(){
+               var longitud=document.getElementById("longitud");
+                longitud.style.display="none";
+
+                var masa=document.getElementById("masa");
+                masa.style.display="none";
+
+                var tiempo=document.getElementById("tiempo");
+                tiempo.style.display="none";
+
+                var temperatura=document.getElementById("temperatura");
+                temperatura.style.display="none";
+               
+                var temporizador=setInterval(function(){comenzar()},500); //Restrasa la funcion comenzar.
+                 function comenzar(){
+                      $("#longitud").fadeIn(500);
+                 }
+               
+                 var temporizador_2=setInterval(function(){comenzar_2()},1000); //Restrasa la funcion comenzar.
+                 function comenzar_2(){
+                      $("#masa").fadeIn(600);
+                 }
+
+                 var temporizador_3=setInterval(function(){comenzar_3()},1500); //Restrasa la funcion comenzar.
+                 function comenzar_3(){
+                      $("#tiempo").fadeIn(700);
+                 }
+
+                 var temporizador_4=setInterval(function(){comenzar_4()},2000); //Restrasa la funcion comenzar.
+                 function comenzar_4(){
+                      $("#temperatura").fadeIn(800);
+                 }
+            });
+    </script>
+   
+   <br/><br/><br/>
+    <footer>TODOS LOS DERECHOS RESERVADOS AARON HERNAN MEJIA CEJA</footer>
+</body>
+</html>

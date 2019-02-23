@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="estilos_programas.css">
+    <link rel="manifest" href="../manifest.json">
+    <link rel="icon" href="imagenes/mi_logo.png">
+    <script type="text/javascript" src="../jquery/dist/jquery.min.js"></script>
+    <!--<script type="text/javascript" src="longitud.js"></script>-->
+    <title>LONGITUD</title>
+</head>
+<body>
+    <img src="../imagenes/icono.png" id="icono" class="icono">
+    <img src="../imagenes/icono.png" id="icono_2" class="icono">
+    <div id="menu">
+        <P><a href="../inicio.html">MENU</a></P>
+        <br/>
+        <P><a href="longitud.html">LONGITUD</a></P>
+        <br/>
+        <P><a href="masa.html">MASA</a></P>
+        <br/>
+        <P><a href="tiempo.html">TIEMPO</a></P>
+        <br/>
+        <P> <a href="temperatura.html">TEMPERATURA</a></P>
+    </div>
+    <center><h2>LONGITUD</h2></center>
+    
+    <br/>
+    
+    <div id="contenedor_selects">
+        <center>Convertir</center>
+
+        <br/><br/>
+        
+    <div id="contenedor_convertir">
+
+        <input type=text id="a_convertir">  
+    
+        <div id="contenedor_flecha_1"><img src="../imagenes/flecha.png"  id="flecha_1"><img src="../imagenes/flecha_2.png" width="100%" id="flecha_subir"></div>
+        
+            <div id="opccion_1" class="opcciones">
+                PULGADAS
+            </div>
+            <div id="opccion_2" class="opcciones">
+                PIES
+            </div>
+            <div id="opccion_3" class="opcciones">
+                YARDAS
+            </div>
+            <div id="opccion_4" class="opcciones">
+                CENTIMETROS
+            </div>
+            <div id="opccion_5" class="opcciones">
+                METROS
+            </div>
+         &nbsp;
+        a
+    </div><!--Cierra contenedor_convertir-->
+    
+    <div id="contenedor_conversion">
+        <input type="text" id="conversion"> 
+        
+            <div id="contenedor_flecha_2"><img src="../imagenes/flecha.png"  id="flecha_2"><img src="../imagenes/flecha_2.png" width="100%" id="flecha_subir_2"></div>
+
+                <div id="opccion_6" class="opcciones_2">
+                    CENTIMETROS
+                </div>
+                <div id="opccion_7" class="opcciones_2">
+                    METROS
+                </div>
+                <div id="opccion_8" class="opcciones_2">
+                    PULGADAS
+                </div>
+                <div id="opccion_9" class="opcciones_2">
+                    PIES
+                </div>
+                <div id="opccion_10" class="opcciones_2">
+                    YARDAS
+                </div>
+        </div><!--Cierrra contenedor_conversion-->
+
+    <br/><br/>
+
+   <!-- <input class="botones" id="comenzar" type="submit" value="COMENZAR">-->
+
+    <br/><br/><br/>
+
+    <center> <input type="number" id="unidad"> = <input type="number"  id="resultado"> </center>
+
+    <br/><br/>
+
+    <input  class="botones" type="button" value="CALCULAR" id="calcular">
+
+    <div id="mensaje">
+        
+    </div>
+
+    <div id="mensaje_2">
+        
+    </div>
+                                   
+    <footer>
+        TODOS LOS DERECHOS RESERVADOS
+    </footer>
+
+    <script>
+        $(document).ready(function(){      
+            var opccion_1=document.querySelector("#opccion_1");
+            var opccion_2=document.querySelector("#opccion_2");
+            var opccion_3=document.querySelector("#opccion_3");
+            var opccion_4=document.querySelector("#opccion_4");
+            var opccion_5=document.querySelector("#opccion_5");
+            var opccion_6=document.querySelector("#opccion_6");
+            var opccion_7=document.querySelector("#opccion_7");
+            var opccion_8=document.querySelector("#opccion_8");
+            var opccion_9=document.querySelector("#opccion_9");
+            var opccion_10=document.querySelector("#opccion_10");
+            var a_convertir=document.querySelector("#a_convertir");
+            var converion=document.querySelector("#converion");
+            var calculos=document.querySelector("#calcular");
+            var resultado=document.querySelector("#resultado");
+            var flecha_subir=document.querySelector("#flecha_subir");
+            var flecha_subir_2=document.querySelector("#flecha_subir_2");
+            var icono=document.querySelector("#icono");
+            var icono_2=document.querySelector("#icono_2");
+            var menu=document.querySelector("#menu");
+            var flecha_1=document.querySelector("#flecha_1").addEventListener("click",mostrar_opcciones_1,false);
+            var flecha_2=document.querySelector("#flecha_2").addEventListener("click",mostrar_opcciones_2,false);
+            
+
+            opccion_1.addEventListener("click",pulgadas,false);
+            opccion_2.addEventListener("click",pies,false);
+            opccion_3.addEventListener("click",yardas,false);
+            opccion_4.addEventListener("click",centimetros,false);
+            opccion_5.addEventListener("click",metros,false);
+            opccion_6.addEventListener("click",centimetros_2,false);
+            opccion_7.addEventListener("click",metros_2,false);
+            opccion_8.addEventListener("click",pulgadas_2,false);
+            opccion_9.addEventListener("click",pies_2,false);
+            opccion_10.addEventListener("click",yardas_2,false);
+            calculos.addEventListener("click",calcular,false);
+            flecha_subir.addEventListener("click",ocultar_opcciones,false);
+            flecha_subir_2.addEventListener("click",ocultar_opcciones_2,false);
+            icono.addEventListener("click",muestrame,false);
+            icono_2.addEventListener("click",ocultame,false);
+
+            opccion_1.style.display="none";
+            opccion_2.style.display="none";
+            opccion_3.style.display="none";
+            opccion_4.style.display="none";
+            opccion_5.style.display="none";
+            opccion_6.style.display="none";
+            opccion_7.style.display="none";
+            opccion_8.style.display="none";
+            opccion_9.style.display="none";
+            opccion_10.style.display="none";
+            
+            function muestrame(){
+                icono.style.display="none";
+                icono_2.style.display="block";
+                menu.style.display="block";
+            }
+
+            function ocultame(){
+                icono.style.display="block";
+                icono_2.style.display="none";
+                menu.style.display="none";
+            }
+
+            function mostrar_opcciones_1(){
+                flecha_subir.style.display="block";
+                opccion_1.style.display="block";
+                opccion_2.style.display="block";
+                opccion_3.style.display="block";
+                opccion_4.style.display="block";
+                opccion_5.style.display="block";
+            }
+
+            function mostrar_opcciones_2(){
+                flecha_subir_2.style.display="block";
+                opccion_6.style.display="block";
+                opccion_7.style.display="block";
+                opccion_8.style.display="block";
+                opccion_9.style.display="block";
+                opccion_10.style.display="block";
+            }
+            
+            function ocultar_opcciones(){
+                flecha_subir.style.display="none";
+                opccion_1.style.display="none";
+                opccion_2.style.display="none";
+                opccion_3.style.display="none";
+                opccion_4.style.display="none";
+                opccion_5.style.display="none";
+            }
+
+            function ocultar_opcciones_2(){
+                flecha_subir_2.style.display="none";
+                opccion_6.style.display="none";
+                opccion_7.style.display="none";
+                opccion_8.style.display="none";
+                opccion_9.style.display="none";
+                opccion_10.style.display="none";
+            }
+
+            function pulgadas(){
+                a_convertir.value='PULGADAS';
+                opccion_1.style.display="none";
+                opccion_2.style.display="none";
+                opccion_3.style.display="none";
+                opccion_4.style.display="none";
+                opccion_5.style.display="none";
+                document.querySelector("#mensaje").innerHTML="Inserta las pulgadas";
+                  }
+            
+
+            function pies(){
+                a_convertir.value='PIES';
+                opccion_1.style.display="none";
+                opccion_2.style.display="none";
+                opccion_3.style.display="none";
+                opccion_4.style.display="none";
+                opccion_5.style.display="none";
+                document.querySelector("#mensaje").innerHTML="Inserta los pies";
+            }
+
+            function yardas(){
+                a_convertir.value='YARDAS';
+                opccion_1.style.display="none";
+                opccion_2.style.display="none";
+                opccion_3.style.display="none";
+                opccion_4.style.display="none";
+                opccion_5.style.display="none";
+                document.querySelector("#mensaje").innerHTML="Inserta las yardas";
+            }
+
+            function centimetros(){
+                a_convertir.value='CENTIMETROS';
+                opccion_1.style.display="none";
+                opccion_2.style.display="none";
+                opccion_3.style.display="none";
+                opccion_4.style.display="none";
+                opccion_5.style.display="none";
+                document.querySelector("#mensaje").innerHTML="Inserta los cm";
+            }
+
+            function metros(){
+                a_convertir.value='METROS';
+                opccion_1.style.display="none";
+                opccion_2.style.display="none";
+                opccion_3.style.display="none";
+                opccion_4.style.display="none";
+                opccion_5.style.display="none";
+                document.querySelector("#mensaje").innerHTML="Inserta los m";
+            }
+            
+            function ocultar_menu_2(){
+                opccion_6.style.display="none";
+                opccion_7.style.display="none";
+                opccion_9.style.display="none";
+                opccion_10.style.display="none";
+            }
+
+             function centimetros_2(){
+                conversion.value='CENTIMETROS';
+                opccion_6.style.display="none";
+                opccion_7.style.display="none";
+                opccion_8.style.display="none";
+                opccion_9.style.display="none";
+                opccion_10.style.display="none";
+                document.querySelector("#mensaje_2").innerHTML="CM";
+            }
+
+            function metros_2(){
+                conversion.value='METROS';
+                opccion_6.style.display="none";
+                opccion_7.style.display="none";
+                opccion_8.style.display="none";
+                opccion_9.style.display="none";
+                opccion_10.style.display="none";
+                document.querySelector("#mensaje_2").innerHTML="M";
+            }
+            
+            function pulgadas_2(){
+                conversion.value='PULGADAS';
+                opccion_6.style.display="none";
+                opccion_7.style.display="none";
+                opccion_8.style.display="none";
+                opccion_9.style.display="none";
+                opccion_10.style.display="none";
+                document.querySelector("#mensaje_2").innerHTML="Pulgadas";
+            }
+
+            function pies_2(){
+                conversion.value='PIES';
+                opccion_6.style.display="none";
+                opccion_7.style.display="none";
+                opccion_8.style.display="none";
+                opccion_9.style.display="none";
+                opccion_10.style.display="none";
+                document.querySelector("#mensaje_2").innerHTML="Pies";
+            }
+
+            function yardas_2(){
+                conversion.value='YARDAS';
+                opccion_6.style.display="none";
+                opccion_7.style.display="none";
+                opccion_8.style.display="none";
+                opccion_9.style.display="none";
+                opccion_10.style.display="none";
+                document.querySelector("#mensaje_2").innerHTML="Yardas";
+            }
+
+           // var unidad=document.querySelector("#unidad").value;
+           // var pulgadas_cm;
+
+            function calcular(){
+                if((a_convertir.value=='PULGADAS') && (conversion.value=='CENTIMETROS')){
+                    var pulgadas_cm;
+                    pulgadas_cm=(unidad.value*2.54);
+                    resultado.style.background="white";
+                    resultado.value=pulgadas_cm;
+                  }else if((a_convertir.value=='PULGADAS') && (conversion.value=='METROS')){
+                    var pulgadas_m;
+                    pulgadas_m=(unidad.value*0.0254);
+                    resultado.style.background="white";
+                    resultado.value=pulgadas_m;
+                  }else if((a_convertir.value=='PULGADAS') && (conversion.value=='PULGADAS')){
+                    var pulgadas_pulgadas;
+                    pulgadas_pulgadas=(unidad.value*1);
+                    resultado.style.background="white";
+                    resultado.value=pulgadas_pulgadas;
+                  }else if((a_convertir.value=='PULGADAS') && (conversion.value=='YARDAS')){
+                    var pulgadas_yardas;
+                    pulgadas_yardas=(unidad.value/36);
+                    resultado.style.background="white";
+                    resultado.value=pulgadas_yardas;
+                  }else if((a_convertir.value=='PIES') && (conversion.value=='CENTIMETROS')){
+                    var pies_centimetros;
+                    pies_centimetros=(unidad.value*30.48);
+                    resultado.style.background="white";
+                    resultado.value=pies_centimetros;
+                  }else if((a_convertir.value=='PIES') && (conversion.value=='METROS')){
+                    var pies_metros;
+                    pies_metros=(unidad.value/3.281);
+                    resultado.style.background="white";
+                    resultado.value=pies_metros;
+                  }else if((a_convertir.value=='PIES') && (conversion.value=='PULGADAS')){
+                    var pies_pulgadas;
+                    pies_pulgadas=(unidad.value*12);
+                    resultado.style.background="white";
+                    resultado.value=pies_pulgadas;
+                  }else if((a_convertir.value=='PIES') && (conversion.value=='PIES')){
+                    var pies_pies;
+                    pies_pies=(unidad.value*1);
+                    resultado.style.background="white";
+                    resultado.value=pies_pies;
+                    }else if((a_convertir.value=='PIES') && (conversion.value=='YARDAS')){
+                    var pies_yardas;
+                    pies_yardas=(unidad.value/3.281);
+                    resultado.style.background="white";
+                    resultado.value=pies_yardas;
+                    }else if((a_convertir.value=='YARDAS') && (conversion.value=='CENTIMETROS')){
+                    var yardas_centimetros;
+                    yardas_centimetros=(unidad.value*91.44);
+                    resultado.style.background="white";
+                    resultado.value=yardas_centimetros;
+                    }else if((a_convertir.value=='YARDAS') && (conversion.value=='METROS')){
+                    var yardas_metros;
+                    yardas_metros=(unidad.value/1.094);
+                    resultado.style.background="white";
+                    resultado.value=yardas_metros;
+                    }else if((a_convertir.value=='YARDAS') && (conversion.value=='PULGADAS')){
+                    var yardas_pulgadas;
+                    yardas_pulgadas=(unidad.value*36);
+                    resultado.style.background="white";
+                    resultado.value=yardas_pulgadas;
+                    }else if((a_convertir.value=='YARDAS') && (conversion.value=='PIES')){
+                    var yardas_pies;
+                    yardas_pies=(unidad.value*3);
+                    resultado.style.background="white";
+                    resultado.value=yardas_pies;
+                    }else if((a_convertir.value=='YARDAS') && (conversion.value=='YARDAS')){
+                    var yardas_yardas;
+                    yardas_yardas=(unidad.value*1);
+                    resultado.style.background="white";
+                    resultado.value=yardas_yardas;
+                    }else if((a_convertir.value=='CENTIMETROS') && (conversion.value=='CENTIMETROS')){
+                    var centimetros_centimetros;
+                    centimetros_centimetros=(unidad.value*1);
+                    resultado.style.background="white";
+                    resultado.value=centimetros_centimetros;
+                    }else if((a_convertir.value=='CENTIMETROS') && (conversion.value=='METROS')){
+                    var centimetros_metros;
+                    centimetros_metros=(unidad.value/100);
+                    resultado.style.background="white";
+                    resultado.value=centimetros_metros;
+                    }else if((a_convertir.value=='CENTIMETROS') && (conversion.value=='PULGADAS')){
+                    var centimetros_pulgadas;
+                    centimetros_pulgadas=(unidad.value/2.54);
+                    resultado.style.background="white";
+                    resultado.value=centimetros_pulgadas;
+                    }else if((a_convertir.value=='CENTIMETROS') && (conversion.value=='PIES')){
+                    var centimetros_pies;
+                    centimetros_pies=(unidad.value/30.48);
+                    resultado.style.background="white";
+                    resultado.value=centimetros_pies;
+                    }else if((a_convertir.value=='CENTIMETROS') && (conversion.value=='YARDAS')){
+                    var centimetros_yardas;
+                    centimetros_yardas=(unidad.value/91.44);
+                    resultado.style.background="white";
+                    resultado.value=centimetros_yardas;
+                    }else if((a_convertir.value=='METROS') && (conversion.value=='CENTIMETROS')){
+                    var metros_centimetros;
+                    metros_centimetros=(unidad.value*100);
+                    resultado.style.background="white";
+                    resultado.value=metros_centimetros;
+                    }else if((a_convertir.value=='METROS') && (conversion.value=='METROS')){
+                    var metros_metros;
+                    metros_metros=(unidad.value*1);
+                    resultado.style.background="white";
+                    resultado.value=metros_metros;
+                    }else if((a_convertir.value=='METROS') && (conversion.value=='PULGADAS')){
+                    var metros_pulgadas;
+                    metros_pulgadas=(unidad.value*39.37);
+                    resultado.style.background="white";
+                    resultado.value=metros_pulgadas;
+                    }else if((a_convertir.value=='METROS') && (conversion.value=='PIES')){
+                    var metros_pies;
+                    metros_pies=(unidad.value*3.281);
+                    resultado.style.background="white";
+                    resultado.value=metros_pies;
+                    }else if((a_convertir.value=='METROS') && (conversion.value=='YARDAS')){
+                    var metros_yardas;
+                    metros_yardas=(unidad.value*1.094);
+                    resultado.style.background="white";
+                    resultado.value=metros_yardas;
+                    }                                                                       
+
+                    
+         }
+            
+         });
+    </script>
+     <script src="script.js"></script> 
+</body>
+</html>

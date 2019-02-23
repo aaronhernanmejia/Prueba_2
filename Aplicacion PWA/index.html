@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="estilos_inicio.css">
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" href="imagenes/mi_logo.png">
+    <script src="jquery/dist/jquery.min.js"></script>
+    <title>Inicio</title>
+    <script>
+            $(document).ready(function(){
+                 $("img").hide();
+                 $("p").hide();
+                 $("#comenzar").hide();
+                 $("img").fadeIn(3000);
+                 $("p").fadeIn(4000);
+                 var temporizador=setInterval(function(){comenzar()},3000); //Restrasa la funcion comenzar.
+                 function comenzar(){
+                      $("#comenzar").fadeIn(1000);
+                 }
+            });
+         </script>
+</head>
+<body>
+    
+    <img src="imagenes/mi_logo.png">
+    <br/><br/>
+    <center><p>Desarrollado por: Aaron Hernan Mejia Ceja</p></center>
+    <br/><br/><br/>
+    <a href="inicio.html">
+        <div id="comenzar">
+            COMENZAR
+        </div> <!--Cierra comenzar-->
+    </a>
+    <br/><br/><br/><br/>
+    <center>TODOS LOS DERECHOS RESERVADOS</center>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="estilos_programas.css">
+    <link rel="manifest" href="../manifest.json">
+    <link rel="icon" href="imagenes/mi_logo.png">
+    <script type="text/javascript" src="../jquery/dist/jquery.min.js"></script>
+    <!--<script type="text/javascript" src="longitud.js"></script>-->
+    <title>TIEMPO</title>
+</head>
+<body>
+        <img src="../imagenes/icono.png" id="icono" class="icono">
+        <img src="../imagenes/icono.png" id="icono_2" class="icono">
+        <div id="menu">
+            <P><a href="../inicio.html">MENU</a></P>
+            <br/>
+            <P><a href="longitud.html">LONGITUD</a></P>
+            <br/>
+            <P><a href="masa.html">MASA</a></P>
+            <br/>
+            <P><a href="tiempo.html">TIEMPO</a></P>
+            <br/>
+            <P> <a href="temperatura.html">TEMPERATURA</a></P>
+        </div>
+    <center><h2>TIEMPO</h2></center>
+    
+    <br/>
+    
+    <div id="contenedor_selects">
+        <center>Convertir</center>
+        <br/><br/>
+        <div id="contenedor_convertir">
+            <input type=text id="a_convertir">  
+        
+            <div id="contenedor_flecha_1"><img src="../imagenes/flecha.png" width="100%" id="flecha_1"><img src="../imagenes/flecha_2.png" width="100%" id="flecha_subir"></div>
+            
+                <div id="opccion_1" class="opcciones">
+                    AÑOS
+                </div>
+                <div id="opccion_2" class="opcciones">
+                    DIAS
+                </div>
+                <div id="opccion_3" class="opcciones">
+                    HORAS
+                </div>
+            
+        &nbsp; a 
+       </div>
+
+       <div id="contenedor_conversion">
+
+            <input type="text" id="conversion"> 
+        
+            <div id="contenedor_flecha_2"><img src="../imagenes/flecha.png" width="100%" id="flecha_2"><img src="../imagenes/flecha_2.png" width="100%" id="flecha_subir_2"></div>
+
+                <div id="opccion_4" class="opcciones_2">
+                    HORAS
+                </div>
+                <div id="opccion_5" class="opcciones_2">
+                    DIAS
+                </div>
+                <div id="opccion_6" class="opcciones_2">
+                    AÑOS
+                </div>
+        </div>
+    
+
+    <br/><br/>
+
+   <!-- <input class="botones" id="comenzar" type="submit" value="COMENZAR">-->
+
+    <br/><br/><br/>
+
+    <center> <input type="number" id="unidad"> = <input type="number"  id="resultado"> </center>
+
+    <br/><br/><br/>
+
+    <input  class="botones" type="button" value="CALCULAR" id="calcular">
+
+    <div id="mensajes"> <div id="mensaje"> </div>   <div id="mensaje_2"> </div> </div><!--cierra mensajes-->
+
+    
+                                   
+    <footer>
+        TODOS LOS DERECHOS RESERVADOS
+    </footer>
+    <script>
+        $(document).ready(function(){      
+            var opccion_1=document.querySelector("#opccion_1");
+            var opccion_2=document.querySelector("#opccion_2");
+            var opccion_3=document.querySelector("#opccion_3");
+            var opccion_4=document.querySelector("#opccion_4");
+            var opccion_5=document.querySelector("#opccion_5");
+            var opccion_6=document.querySelector("#opccion_6");
+            var a_convertir=document.querySelector("#a_convertir");
+            var converion=document.querySelector("#converion");
+            var calculos=document.querySelector("#calcular");
+            var resultado=document.querySelector("#resultado");
+            var flecha_subir=document.querySelector("#flecha_subir");
+            var flecha_subir_2=document.querySelector("#flecha_subir_2");
+            var icono=document.querySelector("#icono");
+            var icono_2=document.querySelector("#icono_2");
+            var menu=document.querySelector("#menu");
+            var flecha_1=document.querySelector("#flecha_1").addEventListener("click",mostrar_opcciones_1,false);
+            var flecha_1=document.querySelector("#flecha_2").addEventListener("click",mostrar_opcciones_2,false);
+           
+            opccion_1.addEventListener("click",años,false);
+            opccion_2.addEventListener("click",dias,false);
+            opccion_3.addEventListener("click",horas,false);
+            opccion_4.addEventListener("click",horas_2,false);
+            opccion_5.addEventListener("click",dias_2,false);
+            opccion_6.addEventListener("click",años_2,false);
+            calculos.addEventListener("click",calcular,false);
+            flecha_subir.addEventListener("click",ocultar_opcciones,false);
+            flecha_subir_2.addEventListener("click",ocultar_opcciones_2,false);
+            icono.addEventListener("click",muestrame,false);
+            icono_2.addEventListener("click",ocultame,false);
+
+            opccion_1.style.display="none";
+            opccion_2.style.display="none";
+            opccion_3.style.display="none";
+            opccion_4.style.display="none";
+            opccion_5.style.display="none";
+            opccion_6.style.display="none";
+            
+
+            function muestrame(){
+                icono.style.display="none";
+                icono_2.style.display="block";
+                menu.style.display="block";
+            }
+
+            function ocultame(){
+                icono.style.display="block";
+                icono_2.style.display="none";
+                menu.style.display="none";
+            }
+
+            function mostrar_opcciones_1(){
+                flecha_subir.style.display="block";
+                opccion_1.style.display="block";
+                opccion_2.style.display="block";
+                opccion_3.style.display="block";
+            }
+
+            function mostrar_opcciones_2(){
+                flecha_subir_2.style.display="block";
+                opccion_4.style.display="block";
+                opccion_5.style.display="block";
+                opccion_6.style.display="block";
+            }
+
+             function ocultar_opcciones(){
+                flecha_subir.style.display="none";
+                flecha_subir.style.display="none";
+                opccion_1.style.display="none";
+                opccion_2.style.display="none";
+                opccion_3.style.display="none";
+            }
+
+            function ocultar_opcciones_2(){
+                flecha_subir_2.style.display="none";
+                opccion_4.style.display="none";
+                opccion_5.style.display="none";
+                opccion_6.style.display="none";
+            }
+
+
+            function años(){
+                a_convertir.value='AÑOS';
+                opccion_1.style.display="none";
+                opccion_2.style.display="none";
+                opccion_3.style.display="none";
+                document.querySelector("#mensaje").innerHTML="Inserta los años";
+                  }
+            
+
+            function dias(){
+                a_convertir.value='DIAS';
+                opccion_1.style.display="none";
+                opccion_2.style.display="none";
+                opccion_3.style.display="none";
+                document.querySelector("#mensaje").innerHTML="Inserta los dias";
+            }
+
+            function horas(){
+                a_convertir.value='HORAS';
+                opccion_1.style.display="none";
+                opccion_2.style.display="none";
+                opccion_3.style.display="none";
+                document.querySelector("#mensaje").innerHTML="Inserta los horas";
+            }
+
+            
+            function ocultar_menu_2(){
+                opccion_5.style.display="none";
+                opccion_6.style.display="none";
+                opccion_7.style.display="none";
+                opccion_8.style.display="none";
+            }
+
+             function años_2(){
+                conversion.value='AÑOS';
+                opccion_4.style.display="none";
+                opccion_5.style.display="none";
+                opccion_6.style.display="none";
+                document.querySelector("#mensaje_2").innerHTML="Años";
+            }
+
+            function dias_2(){
+                conversion.value='DIAS';
+                opccion_4.style.display="none";
+                opccion_5.style.display="none";
+                opccion_6.style.display="none";
+                document.querySelector("#mensaje_2").innerHTML="Dias";
+            }
+            
+            function horas_2(){
+                conversion.value='HORAS';
+                opccion_4.style.display="none";
+                opccion_5.style.display="none";
+                opccion_6.style.display="none";
+                document.querySelector("#mensaje_2").innerHTML="Horas";
+            }
+
+            
+
+           // var unidad=document.querySelector("#unidad").value;
+           // var pulgadas_cm;
+
+            function calcular(){
+                if((a_convertir.value=='AÑOS') && (conversion.value=='HORAS')){
+                    var años_horas;
+                    años_horas=(unidad.value*8760);
+                    resultado.style.background="white";
+                    resultado.value=años_horas;
+                  }else if((a_convertir.value=='AÑOS') && (conversion.value=='DIAS')){
+                    var años_dias;
+                    años_dias=(unidad.value*365);
+                    resultado.style.background="white";
+                    resultado.value=años_dias;
+                  }else if((a_convertir.value=='AÑOS') && (conversion.value=='AÑOS')){
+                    var años_años;
+                    años_años=(unidad.value*1);
+                    resultado.style.background="white";
+                    resultado.value=años_años;
+                  }else if((a_convertir.value=='DIAS') && (conversion.value=='AÑOS')){
+                    var dias_años;
+                    dias_años=(unidad.value/365);
+                    resultado.style.background="white";
+                    resultado.value=dias_años;
+                  }else if((a_convertir.value=='DIAS') && (conversion.value=='DIAS')){
+                    var dias_dias;
+                    dias_dias=(unidad.value*1);
+                    resultado.style.background="white";
+                    resultado.value=dias_dias;
+                  }else if((a_convertir.value=='DIAS') && (conversion.value=='HORAS')){
+                    var dias_horas;
+                    dias_horas=(unidad.value*24);
+                    resultado.style.background="white";
+                    resultado.value=dias_horas;
+                  }else if((a_convertir.value=='HORAS') && (conversion.value=='HORAS')){
+                    var horas_horas;
+                    horas_horas=(unidad.value*1);
+                    resultado.style.background="white";
+                    resultado.value=horas_horas;
+                  }else if((a_convertir.value=='HORAS') && (conversion.value=='AÑOS')){
+                    var horas_años;
+                    horas_años=(unidad.value/8760);
+                    resultado.style.background="white";
+                    resultado.value=horas_años;
+                  }else if((a_convertir.value=='HORAS') && (conversion.value=='DIAS')){
+                    var horas_dias;
+                    horas_dias=(unidad.value/24);
+                    resultado.style.background="white";
+                    resultado.value=horas_dias;
+                 }
+            }
+         });
+        </script>
+         <script src="script.js"></script>
+</body>
+</html>

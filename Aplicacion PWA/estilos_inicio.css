@@ -1,0 +1,37 @@
+body{
+    background-image:url("imagenes/fondo_inicio.png");
+    /*background-color:black;*/
+    color:white;
+    font-family:verdana;
+    font-size:15px;
+}
+
+img{
+    margin-top:35%;
+    margin-left:10%;
+    width:80%;
+    border-radius:300px;
+}
+
+#comenzar{
+    width:40%;
+    height:25px;
+    margin:auto;
+    padding:8px;
+    border:5px solid white;
+    background-color:#0269BD;
+    text-align:center;
+    color:white;
+    font-family:verdana;
+    font-size:24px;
+    cursor:pointer;
+}
+
+#comenzar:hover{
+    background-color:black;
+    }
+
+a{
+    text-decoration:none; 
+}
+    
